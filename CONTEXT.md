@@ -75,6 +75,13 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ fix: Prérequis cliquables dans /modules/[slug]
 - ✅ fix: Tableaux markdown (remark-gfm) dans ModuleContent
 - ✅ fix: Panel arbre positionné sous navbar fixe
+- ✅ fix: Panel arbre z-index (overlay z-30 < panel z-40 < navbar z-50)
+- ✅ fix: Prompt IA enrichi (CODE — Nom), regex chat mise à jour
+- ✅ Table ai_projects (Supabase) — sauvegarde auto des parcours IA
+- ✅ ProjectSidebar — liste projets, projet actif localStorage, collapsible
+- ✅ ModulesList — badge "Dans ton parcours" sur modules actifs
+- ✅ ArbreInteractif — glow vert sur modules du parcours
+- ✅ Scripts: --port 3000 + kill-port dans package.json
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
