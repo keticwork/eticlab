@@ -91,6 +91,13 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ fix: Mermaid intégré dans ModuleContent (schémas visuels)
 - ✅ fix: Fond dégradé sombre→clair sur /modules, /modules/[slug], /arbre
 - ✅ fix: Largeur pages max-w-5xl/6xl, padding confortable
+- ✅ Syntax highlighting (react-syntax-highlighter, vscDarkPlus) + badge langue
+- ✅ Marges réduites /modules/[slug], min-h-screen
+- ✅ Chat IA: rendu markdown (ReactMarkdown), codes modules cliquables dans les réponses
+- ✅ Chat IA: Shift+Enter va à la ligne, Enter envoie (textarea)
+- ✅ Chat IA: prompt externe auto-généré + bouton copier
+- ✅ Sidebar: clic projet → charge conversation complète depuis Supabase
+- ✅ ai_projects.messages: sauvegarde conversation complète (colonne JSONB)
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
