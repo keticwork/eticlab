@@ -150,6 +150,7 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 
 ## Feuille de route des modules (ordre logique)
 ### Phase 1 — Fondations
+- 🔲 T-ORG01 — Organisation du poste de travail
 - ✅ T-01-nodejs
 - ✅ T-02-terminal
 - ✅ T-03-git
