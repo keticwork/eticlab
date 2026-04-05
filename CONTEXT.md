@@ -82,6 +82,10 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ ModulesList — badge "Dans ton parcours" sur modules actifs
 - ✅ ArbreInteractif — glow vert sur modules du parcours
 - ✅ Scripts: --port 3000 + kill-port dans package.json
+- ✅ Dashboard superadmin /admin — stats, suggestions, users, projets IA
+- ✅ Protection admin: proxy.ts + vérification email keticwork@gmail.com
+- ✅ RLS Supabase: policies admin pour lecture cross-user
+- ✅ Navbar: lien Admin discret (visible uniquement pour l'admin)
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -109,6 +113,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 4. Déploiement Vercel — uniquement via Claude Code 
    après plusieurs commits, pas à chaque push
 5. Améliorer le visuel landing (transitions, sections)
+7. Dashboard superadmin ✅
 
 ## Vision EticLab (plateforme de formation)
 Objectif final : plateforme interactive de formation technique,
