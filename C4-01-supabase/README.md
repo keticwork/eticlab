@@ -226,6 +226,55 @@ npm install @supabase/supabase-js
 
 ---
 
+## 🔐 Variables d'environnement & sécurité
+
+**Pourquoi ne jamais commiter `.env.local` :**
+> Ce fichier contient tes clés d'accès à la base de données. 
+> Si tu le pushes sur GitHub (même un repo privé), n'importe qui 
+> avec accès au repo peut lire tes clés et accéder à tes données. 
+> Une clé commitée doit être considérée comme compromise.
+
+**La protection par `.gitignore` :**
+> Le fichier `.gitignore` contient la ligne `.env*` qui empêche 
+> Git de tracker tous les fichiers commençant par `.env`. 
+> Vérifie toujours que cette ligne existe AVANT ton premier commit.
+```bash
+# Vérifier que .env.local est bien ignoré
+git status
+# .env.local ne doit PAS apparaître dans la liste
+```
+
+**NEXT_PUBLIC_ vs variables serveur :**
+| Préfixe | Visible côté client ? | Où l'utiliser | Exemple |
+|---------|----------------------|---------------|---------|
+| `NEXT_PUBLIC_` | Oui (dans le bundle JS) | Partout | URL Supabase, clé anon |
+| Sans préfixe | Non (serveur uniquement) | API routes, Server Components | service_role key, secrets |
+
+> Règle simple : si la variable est un secret → pas de préfixe `NEXT_PUBLIC_`.
+> Si elle est publique par design (anon key) → `NEXT_PUBLIC_` est OK.
+
+**anon key vs service_role key :**
+| Clé | Publique ? | Pouvoir | Quand l'utiliser |
+|-----|-----------|---------|-----------------|
+| anon key | Oui | Limité par RLS | Code client (navigateur) |
+| service_role key | Non (secrète) | Bypass RLS, accès total | API routes côté serveur uniquement |
+
+> La clé anon est conçue pour être dans le code client. 
+> C'est RLS qui protège les données, pas le secret de la clé. 
+> La service_role key ne doit JAMAIS être dans une variable `NEXT_PUBLIC_`.
+
+**Le fichier `.env.example` à partager :**
+> Crée un fichier `.env.example` dans ton repo (celui-ci EST commité) 
+> pour montrer aux autres développeurs quelles variables configurer :
+```bash
+# .env.example — copier en .env.local et remplir les valeurs
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+# SUPABASE_SERVICE_ROLE_KEY=    ← côté serveur uniquement
+```
+
+---
+
 ## 💀 Zone de hack
 
 **Vulnérabilité classique — RLS désactivé :**
