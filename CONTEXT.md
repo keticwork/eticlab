@@ -88,6 +88,19 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 - Dashboard : coût par requête API, usage total
 - Système de limitation des coûts (mode gratuit pour bêta amis)
 
+### Monétisation
+- Liens affiliés dans la section Alternatives de chaque module
+  (outils payants : Vercel, Supabase pro, hébergeurs, etc.)
+- Champ "lien affilié" à ajouter dans le tableau Alternatives
+  quand la plateforme sera en ligne
+
+### IA — fonctionnalités avancées
+- L'IA génère le parcours dynamique selon l'objectif utilisateur
+- Pour chaque étape du parcours, l'IA propose un prompt
+  prêt à utiliser dans Claude, Cursor, ChatGPT ou autre
+- L'utilisateur peut ainsi utiliser n'importe quelle IA externe
+  en s'appuyant sur le contenu EticLab comme référence
+
 ### Contraintes
 - Déploiement Vercel uniquement après tests locaux validés
 - Mettre Benny en pause sur Supabase avant création projet EticLab
