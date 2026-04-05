@@ -35,6 +35,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ C1-03 — CDN — complet
 - ✅ C1-04 — SSL/HTTPS — complet
 - ✅ C3-01 — Next.js & React — complet
+- ✅ C3-02 — Routing — complet
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -58,12 +59,35 @@ Toujours lire ce fichier avant de générer un nouveau module.
 4. Créer interface visuelle EticLab (page web du labo)
 
 ## Vision EticLab (plateforme de formation)
-Objectif final : plateforme interactive de formation technique.
-- Parcours "fil rouge" dynamique selon l'objectif de l'utilisateur
-- Modules modulaires et extensibles (ex: auth optionnelle)
+Objectif final : plateforme interactive de formation technique,
+lisible comme un livre ET utilisable comme un outil de guidage IA.
+
+### Expérience utilisateur
+- Responsive mobile-first — lisible sur téléphone
+- Schéma/diagramme interactif des modules
+- Chat IA intégré : l'utilisateur décrit son projet → 
+  le fil rouge se génère dynamiquement
+- Parcours modulaire et extensible (fonctionnalités optionnelles)
 - Pas d'authentification pour l'instant
-- Stack : Next.js / React, Supabase (freemium), Vercel (pro)
+
+### Contenu prévu
+- Modules techniques (stack web, DevOps, BDD...)
+- Modules IA : Claude, Gemini, génération image/vidéo, etc.
+- Structure extensible : facile d'ajouter un module au bon endroit
+
+### Stack technique
+- Next.js / React (frontend)
+- Supabase (base de données, freemium)
+- Vercel pro (hébergement — déploiement après tests locaux uniquement)
+- API Claude ou Gemini pour le chat guidage
+
+### Back-office superadmin
+- Dashboard : coût par requête API, usage total
+- Système de limitation des coûts (mode gratuit pour bêta amis)
+
+### Contraintes
 - Déploiement Vercel uniquement après tests locaux validés
+- Mettre Benny en pause sur Supabase avant création projet EticLab
 
 ## Feuille de route des modules (ordre logique)
 ### Phase 1 — Fondations
@@ -77,7 +101,7 @@ Objectif final : plateforme interactive de formation technique.
 
 ### Phase 2 — L'appli
 - ✅ C3-01 — Next.js / React (structure)
-- 🔲 C3-02 — Routing (navigation)
+- ✅ C3-02 — Routing (navigation)
 - 🔲 C3-03 — Composants & UI
 
 ### Phase 3 — Les données
