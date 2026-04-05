@@ -36,6 +36,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ C1-04 — SSL/HTTPS — complet
 - ✅ C3-01 — Next.js & React — complet
 - ✅ C3-02 — Routing — complet
+- ✅ C3-03 — Composants & UI — complet
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -102,7 +103,7 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 ### Phase 2 — L'appli
 - ✅ C3-01 — Next.js / React (structure)
 - ✅ C3-02 — Routing (navigation)
-- 🔲 C3-03 — Composants & UI
+- ✅ C3-03 — Composants & UI
 
 ### Phase 3 — Les données
 - 🔲 C4-01 — Supabase (base de données)
