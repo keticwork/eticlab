@@ -32,6 +32,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ C2-01-os — complet
 - ✅ T-A01 — Claude & IA — complet
 - ✅ T-01b — package.json & scripts npm — complet
+- ✅ C1-03 — CDN — complet
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -69,7 +70,7 @@ Objectif final : plateforme interactive de formation technique.
 - ✅ T-03-git
 - ✅ T-A01-claude
 - ✅ T-01b — package.json & scripts npm
-- 🔲 C1-03 — CDN
+- ✅ C1-03 — CDN
 - 🔲 C1-04 — SSL
 
 ### Phase 2 — L'appli
