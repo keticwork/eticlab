@@ -42,3 +42,6 @@ Laboratoire R&D personnel — comprendre chaque brique technologique d'un SaaS, 
 - [ ] C5-02 — Paiement (Stripe)
 - [ ] C5-03 — RGPD
 - [ ] C5-04 — Monitoring & logs
+
+### Couche T — Tooling
+- [x] T-01 — Node.js & npm
