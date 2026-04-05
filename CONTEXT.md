@@ -47,6 +47,12 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ T-A03b — Landing page & structure plateforme — complet
 - ✅ BDD Supabase créée — tables phases, modules, connexions
 - ✅ eticlab-app connecté à Supabase
+- ✅ T-GCLOUD01 — Google Cloud & OAuth — complet
+- ✅ C3-04 — Authentification — complet
+- ✅ T-ORG01 — Organisation poste de travail — complet
+- ✅ eticlab-app déployé sur Vercel
+- ✅ Auth Google fonctionnelle
+- ✅ Navbar connectée à Supabase Auth
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -64,13 +70,12 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ERR_HTTP_HEADERS_SENT → favicon.ico non géré
 
 ## Prochaines étapes
-1. Peupler la BDD Supabase avec les modules existants ✅
-2. Connecter eticlab-app à Supabase (afficher les modules dynamiquement)
-3. Créer la page /modules
-4. Créer la page /arbre (graphique interactif)
-5. Ajouter l'authentification (Supabase Auth)
-6. Intégrer l'API Claude (guide IA)
-7. Dashboard superadmin
+1. Page /modules — liste dynamique depuis Supabase
+2. Page /arbre — graphique interactif des modules
+3. Page /commencer — onboarding utilisateur
+4. Déploiement Vercel — uniquement via Claude Code 
+   après plusieurs commits, pas à chaque push
+5. Améliorer le visuel landing (transitions, sections)
 
 ## Vision EticLab (plateforme de formation)
 Objectif final : plateforme interactive de formation technique,
@@ -159,7 +164,7 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 
 ## Feuille de route des modules (ordre logique)
 ### Phase 1 — Fondations
-- 🔲 T-ORG01 — Organisation du poste de travail
+- ✅ T-ORG01 — Organisation du poste de travail
 - ✅ T-01-nodejs
 - ✅ T-02-terminal
 - ✅ T-03-git
@@ -190,6 +195,16 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 - ✅ T-A03b — Landing page & structure plateforme
 - ✅ T-SEC01 — Sécurité web
 - ✅ T-LEG01 — Légal & RGPD
+- ✅ T-GCLOUD01 — Google Cloud & OAuth
+- ✅ C3-04 — Authentification web
+- ✅ T-ORG01 — Organisation poste de travail
+
+## Workflow déploiement Vercel
+- Git push à chaque commit important (automatique)
+- Déploiement Vercel : uniquement quand une feature 
+  est complète et testée en local
+- Commande : cd ~/Dev/keticwork/eticlab-app && vercel --prod
+- Toujours tester en local avant de déployer
 
 ## Convention alternatives
 Chaque module doit inclure une section Alternatives.
