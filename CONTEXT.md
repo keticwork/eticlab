@@ -60,6 +60,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ Page /modules — liste dynamique Supabase, recherche temps réel, cards par phase
 - ✅ Page /modules/[slug] — placeholder pour contenu futur
 - ✅ Landing: recherche redirige vers /modules?q=terme
+- ✅ Page /arbre — mind map interactif (react-force-graph-2d), accessible sans connexion
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -80,7 +81,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 
 ## Prochaines étapes
 1. Page /modules — liste dynamique depuis Supabase ✅
-2. Page /arbre — graphique interactif des modules
+2. Page /arbre — graphique interactif des modules ✅
 3. Page /commencer — onboarding utilisateur
 4. Déploiement Vercel — uniquement via Claude Code 
    après plusieurs commits, pas à chaque push
