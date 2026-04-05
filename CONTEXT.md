@@ -31,6 +31,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ C1-02-http — complet + bug favicon corrigé + TESTS.md
 - ✅ C2-01-os — complet
 - ✅ T-A01 — Claude & IA — complet
+- ✅ T-01b — package.json & scripts npm — complet
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -67,7 +68,7 @@ Objectif final : plateforme interactive de formation technique.
 - ✅ T-02-terminal
 - ✅ T-03-git
 - ✅ T-A01-claude
-- 🔲 T-01b — package.json & scripts npm
+- ✅ T-01b — package.json & scripts npm
 - 🔲 C1-03 — CDN
 - 🔲 C1-04 — SSL
 
