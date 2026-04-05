@@ -90,6 +90,10 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 - Vercel pro (hébergement — déploiement après tests locaux uniquement)
 - API Claude ou Gemini pour le chat guidage
 
+### Repos GitHub
+- keticwork/eticlab — contenu : modules de documentation
+- keticwork/eticlab-app — application : la vraie plateforme web (à créer)
+
 ### Back-office superadmin
 - Dashboard : coût par requête API, usage total
 - Système de limitation des coûts (mode gratuit pour bêta amis)
