@@ -55,6 +55,8 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ Navbar connectée à Supabase Auth
 - ✅ Auth complète — login/signup email+mdp, reset password, middleware, /arbre protégé
 - ✅ C3-04 enrichi — middleware, reset-password, session 30j, toggle mot de passe
+- ✅ fix: redirect après login (window.location.href au lieu de router.push)
+- ✅ fix: callback gère token_hash (confirmation email) + code (OAuth)
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -70,6 +72,8 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - Port 3000 occupé par Benny (Next.js) → utilisé 3001
 - lsof -ti:3000 | xargs kill insuffisant sur Next.js
 - ERR_HTTP_HEADERS_SENT → favicon.ico non géré
+- Redirect après login : router.push ne propage pas les cookies → fix: window.location.href
+- Confirmation email : callback ne gérait que le code OAuth, pas token_hash → fix: verifyOtp ajouté
 
 ## Prochaines étapes
 1. Page /modules — liste dynamique depuis Supabase
