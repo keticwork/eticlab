@@ -1,7 +1,17 @@
-# Terminal & commandes — Couche T
+`Couche T — Tooling`
 
-## Dépendances
-Aucune — c'est un point de départ.
+# Terminal & commandes
+
+> Maîtriser l'interface texte de ton ordinateur — la base de tout développement.
+
+**Prérequis :** aucun
+
+**Ce que tu vas apprendre :**
+- Les commandes essentielles (navigation, fichiers, processus)
+- Comment enchaîner des commandes avec le pipe |
+- Pourquoi ne jamais copier-coller une commande sans la comprendre
+
+---
 
 ## 🟦 Carte d'identité
 
@@ -16,9 +26,19 @@ Aucune — c'est un point de départ.
 > Chaque commande est un petit programme. Tu peux les 
 > enchaîner, les combiner, les automatiser.
 
+**Schéma** :
+📸 à ajouter dans docs/
+
 ---
 
 ## 🟩 Sous le capot
+
+**Mécanisme :**
+> 1. Tu tapes une commande dans le terminal (ex: `ls -la`)
+> 2. Le shell (zsh sur macOS) interprète la commande
+> 3. Le shell cherche le programme correspondant sur le système
+> 4. L'OS exécute le programme et retourne le résultat
+> 5. Le terminal affiche la sortie
 
 **Commandes essentielles :**
 ```bash
@@ -55,14 +75,20 @@ history      # Historique des commandes
 clear        # Vider le terminal
 ```
 
+**Schéma technique** :
+```mermaid
+graph LR
+  A[Commande tapée] --> B[Shell zsh]
+  B --> C[OS macOS]
+  C --> D[Programme exécuté]
+  D --> E[Résultat affiché]
+```
+
 **Pourquoi "lsof -ti:3000 | xargs kill" n'a pas marché sur Benny :**
 > Benny tourne probablement avec Next.js qui crée plusieurs 
 > processus enfants. lsof trouve le processus principal, 
 > mais les enfants restent vivants et relancent le parent.
-> Solution : tuer le processus npm/node parent, pas juste 
-> celui du port.
-> pkill -f "node" tue tous les processus node.
-> pkill -f "next" tue spécifiquement Next.js.
+> Solution : `pkill -f "next"` tue spécifiquement Next.js.
 
 ---
 
@@ -91,6 +117,11 @@ ls -la | grep README
 ps aux | grep node | grep -v grep
 ```
 
+**Commande clé à retenir :**
+```bash
+lsof -i -P -n | grep LISTEN
+```
+
 ---
 
 ## 💀 Zone de hack
@@ -114,6 +145,28 @@ ps aux | grep node | grep -v grep
 
 ---
 
+## 🔄 Alternatives
+
+| Outil | Gratuit | Open Source | Freemium | Premium | Limites |
+|-------|---------|-------------|----------|---------|---------|
+| Terminal (macOS) | ✅ | — | — | — | Fonctionnalités basiques |
+| iTerm2 | ✅ | ✅ | — | — | macOS uniquement |
+| Warp | ✅ | — | ✅ | ✅ | Compte requis |
+| Alacritty | ✅ | ✅ | — | — | Config complexe |
+
+> **Recommandation EticLab :** Terminal natif macOS pour commencer. iTerm2 quand tu veux plus de confort (split panes, recherche).
+
+---
+
+## ✅ Checklist de validation
+
+- [ ] Est-ce que je sais naviguer dans les dossiers avec cd/ls/pwd ?
+- [ ] Est-ce que je sais utiliser le pipe | pour enchaîner des commandes ?
+- [ ] Est-ce que je sais tuer un processus par PID ou par nom ?
+- [ ] Est-ce que je comprends pourquoi rm -rf est dangereux ?
+
+---
+
 ## 🧰 Toolbox
 
 | Outil | Usage | Prix | Risque |
@@ -122,6 +175,13 @@ ps aux | grep node | grep -v grep
 | iTerm2 | Terminal avancé Mac | Gratuit | Aucun |
 | zsh | Shell par défaut macOS | Gratuit | Config complexe |
 | oh-my-zsh | Thèmes et plugins zsh | Gratuit | Ralentit le terminal |
+
+---
+
+## 📚 Aller plus loin
+
+- [explainshell.com — comprendre une commande](https://explainshell.com)
+- [tldr pages — man simplifié](https://tldr.sh)
 
 ## Liens avec d'autres modules
 - → T-01-nodejs : on lance node depuis le terminal

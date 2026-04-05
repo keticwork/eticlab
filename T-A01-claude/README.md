@@ -1,8 +1,17 @@
-# Claude & IA — Couche T (Tooling Avancé)
+`Couche T — Tooling Avancé`
 
-## Dépendances
-- T-02 — Terminal (Claude Code s'utilise en CLI)
-- T-03 — Git (commits, push depuis Claude Code)
+# Claude & IA
+
+> Comprendre comment utiliser Claude et Claude Code efficacement pour un projet technique.
+
+**Prérequis :** `T-02` `T-03`
+
+**Ce que tu vas apprendre :**
+- La différence entre Claude.ai et Claude Code
+- Les 3 niveaux de contexte (Projet, CONTEXT.md, prompt)
+- Comment structurer un bon prompt et éviter les hallucinations
+
+---
 
 ## 🟦 Carte d'identité
 
@@ -20,6 +29,9 @@
 >   rédiger des prompts, organiser en Projets
 > - **Claude Code** — CLI qui lit/écrit des fichiers, exécute 
 >   des commandes, fait des commits Git directement dans ton terminal
+
+**Schéma** :
+📸 à ajouter dans docs/
 
 **Ce que Claude n'est PAS :**
 - Ce n'est pas un moteur de recherche (il peut halluciner des faits)
@@ -69,6 +81,15 @@ Niveau 3 — Le prompt lui-même
 - `git log --oneline` pour voir ce que Claude Code a fait
 - CONTEXT.md pour tracer l'état entre sessions
 
+**Schéma technique** :
+```mermaid
+graph TD
+  A[Instructions Projet] --> D[Contexte total]
+  B[CONTEXT.md] --> D
+  C[Prompt actuel] --> D
+  D --> E[Réponse Claude]
+```
+
 ---
 
 ## 🟥 Laboratoire de test
@@ -107,6 +128,11 @@ Commiter avec des messages descriptifs en français.
 > - Potentiellement faire des erreurs de structure
 > → Le CONTEXT.md évite ce problème
 
+**Commande clé à retenir :**
+```bash
+cat CONTEXT.md
+```
+
 ---
 
 ## 💀 Zone de hack
@@ -142,6 +168,28 @@ Si Claude répond sans corriger → hallucination.
 
 ---
 
+## 🔄 Alternatives
+
+| Outil | Gratuit | Open Source | Freemium | Premium | Limites |
+|-------|---------|-------------|----------|---------|---------|
+| Claude.ai + Claude Code | — | — | ✅ | ✅ (Max) | Quota de tokens |
+| ChatGPT + Codex | — | — | ✅ | ✅ | Moins bon en code structuré |
+| GitHub Copilot | — | — | — | ✅ (10$/mois) | Autocomplétion uniquement |
+| Cursor | — | — | ✅ | ✅ | IDE complet, courbe d'apprentissage |
+
+> **Recommandation EticLab :** Claude.ai (Pro) + Claude Code — c'est le workflow validé. Claude.ai pour réfléchir, Claude Code pour exécuter.
+
+---
+
+## ✅ Checklist de validation
+
+- [ ] Est-ce que je sais la différence entre Claude.ai et Claude Code ?
+- [ ] Est-ce que je sais structurer un Projet avec des instructions ?
+- [ ] Est-ce que je sais détecter une hallucination ?
+- [ ] Est-ce que je mets à jour CONTEXT.md en fin de session ?
+
+---
+
 ## 🧰 Toolbox
 
 | Outil | Usage | Prix | Risque |
@@ -151,6 +199,13 @@ Si Claude répond sans corriger → hallucination.
 | Projets (claude.ai) | Contexte persistant | Inclus Pro | Limité en Knowledge |
 | CONTEXT.md | Pont entre sessions | Gratuit (fichier) | Oublier de le mettre à jour |
 | CLAUDE.md | Config auto pour Claude Code | Gratuit (fichier) | Trop de règles = confusion |
+
+---
+
+## 📚 Aller plus loin
+
+- [Claude Code — documentation](https://docs.anthropic.com/en/docs/claude-code)
+- [Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering)
 
 ## Bonnes pratiques découvertes
 

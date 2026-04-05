@@ -1,7 +1,17 @@
-# Node.js — Couche T (Tooling)
+`Couche T — Tooling`
 
-## Dépendances
-Aucune — c'est un point de départ.
+# Node.js & npm
+
+> Comprendre le runtime qui permet d'exécuter JavaScript en dehors du navigateur.
+
+**Prérequis :** aucun
+
+**Ce que tu vas apprendre :**
+- Ce qu'est Node.js et pourquoi il existe
+- Comment vérifier ton installation et utiliser le REPL
+- Comment créer un serveur HTTP minimal
+
+---
 
 ## 🟦 Carte d'identité
 
@@ -17,6 +27,9 @@ Aucune — c'est un point de départ.
 > des scripts, des outils en ligne de commande. npm (Node Package Manager) est 
 > livré avec — c'est le magasin de briques réutilisables.
 
+**Schéma** :
+📸 à ajouter dans docs/
+
 **Ce que Node.js n'est PAS :**
 - Ce n'est pas un langage (le langage c'est JavaScript)
 - Ce n'est pas un framework (React, Next.js sont des frameworks qui tournent 
@@ -24,20 +37,24 @@ Aucune — c'est un point de départ.
 - Ce n'est pas un serveur web (c'est un outil pour EN créer un)
 
 **Schéma mental :**
+```
 Navigateur Chrome  →  moteur V8  →  exécute JavaScript
 Node.js            →  moteur V8  →  exécute JavaScript (sans navigateur)
 → même moteur, contexte différent
+```
 
 ---
 
 ## 🟩 Sous le capot
 
 **Mécanisme :**
-> Node.js utilise le moteur V8 de Google (le même que Chrome) pour transformer 
-> ton code JavaScript en instructions machine. Il ajoute par dessus des APIs 
-> que le navigateur n'a pas : accès aux fichiers, au réseau, au système.
+> 1. Tu écris du code JavaScript dans un fichier `.js`
+> 2. Tu lances `node fichier.js` dans le terminal
+> 3. Node.js utilise le moteur V8 de Google pour transformer le code en instructions machine
+> 4. V8 exécute le code et retourne le résultat
+> 5. Node.js ajoute des APIs système (fichiers, réseau) que le navigateur n'a pas
 
-**Vérifier ce qu'on a installé :**
+**Outils d'observation :**
 ```bash
 # Version de Node.js
 node --version
@@ -50,6 +67,15 @@ which node
 
 # Lister les paquets installés globalement
 npm list -g --depth=0
+```
+
+**Schéma technique** :
+```mermaid
+graph LR
+  A[Code .js] --> B[Node.js]
+  B --> C[Moteur V8]
+  C --> D[Instructions machine]
+  B --> E[APIs système fichiers/réseau]
 ```
 
 **Comprendre npm :**
@@ -88,6 +114,11 @@ Voir le fichier src/serveur-minimal.js
 > Réponse : Node.js démarre le serveur, PUIS tu ouvres le navigateur. 
 > Le navigateur est le client, Node.js est le serveur.
 
+**Commande clé à retenir :**
+```bash
+node --version && npm --version
+```
+
 ---
 
 ## 💀 Zone de hack
@@ -113,6 +144,27 @@ npm install express --dry-run
 
 ---
 
+## 🔄 Alternatives
+
+| Outil | Gratuit | Open Source | Freemium | Premium | Limites |
+|-------|---------|-------------|----------|---------|---------|
+| Node.js | ✅ | ✅ | — | — | Mono-thread par défaut |
+| Deno | ✅ | ✅ | — | — | Écosystème plus petit |
+| Bun | ✅ | ✅ | — | — | Jeune, compatibilité partielle |
+
+> **Recommandation EticLab :** Node.js est le standard. C'est ce qu'utilisent Next.js, Vercel, et 95% de l'écosystème.
+
+---
+
+## ✅ Checklist de validation
+
+- [ ] Est-ce que je sais expliquer ce qu'est Node.js vs JavaScript ?
+- [ ] Est-ce que je sais vérifier ma version de Node.js et npm ?
+- [ ] Est-ce que je sais lancer un script avec `node fichier.js` ?
+- [ ] Est-ce que je sais ce que fait `npm audit` ?
+
+---
+
 ## 🧰 Toolbox
 
 | Outil | Usage | Prix | Risque |
@@ -122,8 +174,15 @@ npm install express --dry-run
 | nvm | Gérer plusieurs versions Node | Gratuit | Confusion de versions |
 | npx | Exécuter un paquet sans l'installer | Inclus avec npm | Exécution de code distant |
 
+---
+
+## 📚 Aller plus loin
+
+- [Node.js — documentation officielle](https://nodejs.org/docs/latest/api/)
+- [npmjs.com — registre des paquets](https://www.npmjs.com)
+
 ## Liens avec d'autres modules
 - → C1-01-ports : Node.js écoute sur des ports
 - → C1-02-HTTP : Node.js crée des serveurs HTTP
 - → C2-01-OS : Node.js tourne sur ton OS
-- → C2-04-Git : ton code Node.js est versionné avec Git
+- → T-01b-package-json : package.json configure un projet Node.js

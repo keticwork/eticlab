@@ -1,8 +1,17 @@
-# CDN (Content Delivery Network) — Couche 1
+`Couche 1 — Transport & protocoles`
 
-## Dépendances
-- C1-01 — Ports (le CDN communique via HTTP/HTTPS sur les ports 80/443)
-- C1-02 — HTTP (le CDN intercepte et sert les requêtes HTTP)
+# CDN (Content Delivery Network)
+
+> Comprendre comment un réseau de serveurs distribués accélère la livraison de ton site web.
+
+**Prérequis :** `C1-01` `C1-02`
+
+**Ce que tu vas apprendre :**
+- Ce qu'est un CDN et pourquoi ça accélère un site
+- La différence entre cache HIT et cache MISS
+- Comment observer le cache avec curl et DevTools
+
+---
 
 ## 🟦 Carte d'identité
 
@@ -21,6 +30,9 @@
 > JS, polices). Quand un visiteur fait une requête, le CDN la 
 > redirige vers le serveur le plus proche, réduisant la latence.
 
+**Schéma** :
+📸 à ajouter dans docs/
+
 **Ce que le CDN sert (contenu statique) :**
 | Type | Exemples | Cacheable ? |
 |------|----------|-------------|
@@ -31,22 +43,11 @@
 | HTML | pages statiques | Oui (avec précaution) |
 | API | réponses dynamiques | Non (sauf configuration) |
 
-**Schéma mental :**
-```
-Sans CDN :
-  Visiteur (Marseille) → Serveur (Paris) → 150ms
-
-Avec CDN :
-  Visiteur (Marseille) → Edge server (Marseille) → 10ms
-                         ↑ copie cachée du site
-                         ↑ mise à jour depuis le serveur d'origine
-```
-
 ---
 
 ## 🟩 Sous le capot
 
-**Mécanisme — Comment un CDN fonctionne :**
+**Mécanisme :**
 > 1. Tu déploies ton site sur un serveur d'origine (ex: Vercel)
 > 2. Le CDN copie ton contenu statique sur ses edge servers
 > 3. Quand un visiteur charge ton site, le DNS le redirige 
@@ -58,22 +59,7 @@ Avec CDN :
 > 5. Le cache a une durée de vie (TTL — Time To Live). 
 >    Après expiration, l'edge server re-vérifie auprès de l'origine
 
-**Les headers HTTP liés au cache :**
-```
-Cache-Control: public, max-age=31536000
-  → "Ce fichier peut être caché 1 an par tout le monde"
-
-Cache-Control: no-cache
-  → "Tu peux cacher, mais vérifie toujours avant de servir"
-
-Cache-Control: no-store
-  → "Ne cache jamais ce contenu" (données sensibles)
-
-ETag: "abc123"
-  → Empreinte du fichier — si elle change, le cache est invalidé
-```
-
-**Observer le CDN en action :**
+**Outils d'observation :**
 ```bash
 # Voir les headers de cache d'un site
 curl -I https://ton-site.vercel.app
@@ -91,11 +77,34 @@ dig ton-site.vercel.app
 nslookup ton-site.vercel.app
 ```
 
+**Les headers HTTP liés au cache :**
+```
+Cache-Control: public, max-age=31536000
+  → "Ce fichier peut être caché 1 an par tout le monde"
+
+Cache-Control: no-cache
+  → "Tu peux cacher, mais vérifie toujours avant de servir"
+
+Cache-Control: no-store
+  → "Ne cache jamais ce contenu" (données sensibles)
+
+ETag: "abc123"
+  → Empreinte du fichier — si elle change, le cache est invalidé
+```
+
+**Schéma technique** :
+```mermaid
+graph LR
+  A[Visiteur Marseille] --> B[Edge Marseille]
+  B -->|cache HIT| A
+  B -->|cache MISS| C[Serveur origine Paris]
+  C --> B
+```
+
 **Pourquoi Vercel est déjà un CDN :**
 > Quand tu déploies sur Vercel, ton site est automatiquement 
 > distribué sur le Edge Network de Vercel (~300 PoP dans le monde). 
-> Tu n'as rien à configurer — c'est inclus. C'est l'un des 
-> avantages d'utiliser Vercel plutôt qu'un serveur classique.
+> Tu n'as rien à configurer — c'est inclus.
 
 ---
 
@@ -122,8 +131,6 @@ curl -o /dev/null -s -w "Local: %{time_total}s\n" http://localhost:3001
 # Un site sur Vercel (avec CDN)
 curl -o /dev/null -s -w "Vercel: %{time_total}s\n" https://vercel.com
 ```
-> Le site Vercel sera souvent plus rapide, même si le serveur 
-> d'origine est plus loin — grâce au cache CDN.
 
 **POC 3 — Inspecter dans Chrome DevTools :**
 > 1. Ouvre un site déployé sur Vercel
@@ -139,6 +146,11 @@ curl -o /dev/null -s -w "Vercel: %{time_total}s\n" https://vercel.com
 > Si le CDN tombe (très rare), les requêtes sont redirigées 
 > vers le serveur d'origine. Le site fonctionne toujours, 
 > mais plus lentement. C'est le "fallback to origin".
+
+**Commande clé à retenir :**
+```bash
+curl -s -I https://ton-site.vercel.app | grep -i cache
+```
 
 ---
 
@@ -156,19 +168,36 @@ curl -o /dev/null -s -w "Vercel: %{time_total}s\n" https://vercel.com
 > (Next.js) ajoutent un hash dans les noms de fichiers :
 > `main.abc123.js` → nouveau hash = nouveau fichier = pas de cache périmé.
 
-**Vérification :**
-```bash
-# Vérifier que le cache se renouvelle correctement
-# Déploie une modification, puis :
-curl -s -I https://ton-site.vercel.app | grep -i "x-vercel-cache"
-# Devrait passer de HIT à MISS après un déploiement
-```
-
 **Contre-mesure :**
 > - Ne jamais cacher les réponses dynamiques sans validation
 > - Utiliser des noms de fichiers avec hash (fait automatiquement par Next.js)
 > - Sur Vercel : le cache est invalidé automatiquement à chaque déploiement
 > - Configurer des TTL courts pour le contenu qui change souvent
+
+---
+
+## 🔄 Alternatives
+
+| Outil | Gratuit | Open Source | Freemium | Premium | Limites |
+|-------|---------|-------------|----------|---------|---------|
+| Vercel Edge Network | — | — | ✅ | — | Lié à Vercel |
+| Cloudflare | ✅ | — | ✅ | ✅ | Interface complexe |
+| jsDelivr | ✅ | ✅ | — | — | Contenu public uniquement |
+| Bunny CDN | — | — | — | ✅ (1$/mois) | Moins connu |
+| AWS CloudFront | — | — | — | ✅ | Complexe, coûteux |
+
+> **Recommandation EticLab :** Vercel inclut déjà un CDN — pas besoin 
+> d'en configurer un séparément. Si tu héberges toi-même (Raspberry Pi), 
+> Cloudflare gratuit est le meilleur choix.
+
+---
+
+## ✅ Checklist de validation
+
+- [ ] Est-ce que je sais expliquer ce qu'est un CDN à quelqu'un ?
+- [ ] Est-ce que je sais la différence entre cache HIT et MISS ?
+- [ ] Est-ce que je sais vérifier les headers de cache avec curl ?
+- [ ] Est-ce que je sais pourquoi Vercel est déjà un CDN ?
 
 ---
 
@@ -182,23 +211,16 @@ curl -s -I https://ton-site.vercel.app | grep -i "x-vercel-cache"
 | WebPageTest | Tester la performance depuis différentes villes | Gratuit | Aucun |
 | Lighthouse | Auditer la performance d'un site | Gratuit (Chrome) | Aucun |
 
-## 🔄 Alternatives
+---
 
-| Outil | Type | Modèle | Avantage | Inconvénient |
-|-------|------|--------|----------|--------------|
-| Vercel Edge Network | CDN intégré à la plateforme | Freemium (inclus dans Vercel) | Zéro config, invalidation auto | Lié à Vercel |
-| Cloudflare | CDN + sécurité + DNS | Freemium (plan gratuit généreux) | Gratuit pour la plupart des usages, WAF inclus | Interface complexe |
-| AWS CloudFront | CDN Amazon | Premium (pay-per-use) | Très configurable, intégration AWS | Complexe, coûteux à grande échelle |
-| Bunny CDN | CDN simple et rapide | Premium (à partir de 1$/mois) | Pas cher, simple, performant | Moins connu |
-| jsDelivr | CDN pour librairies open source | Gratuit / open source | Parfait pour servir des packages npm/GitHub | Uniquement pour du contenu public |
+## 📚 Aller plus loin
 
-> **Recommandation EticLab :** Vercel inclut déjà un CDN — pas besoin 
-> d'en configurer un séparément. Si tu héberges toi-même (Raspberry Pi), 
-> Cloudflare gratuit est le meilleur choix pour ajouter un CDN devant.
+- [Cloudflare — What is a CDN?](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/)
+- [WebPageTest — tester la performance](https://www.webpagetest.org)
 
 ## Liens avec d'autres modules
 - → C1-01-ports : le CDN sert sur les ports 80 (HTTP) et 443 (HTTPS)
 - → C1-02-http : le CDN intercepte les requêtes HTTP et sert le cache
 - → C1-04-ssl : le CDN gère souvent le certificat SSL pour toi
 - → C5-01-vercel : Vercel inclut un CDN automatiquement
-- → C4-04-nextjs : Next.js optimise les assets pour le cache CDN (hash dans les noms)
+- → C3-01-nextjs : Next.js optimise les assets pour le cache CDN

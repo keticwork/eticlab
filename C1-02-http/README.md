@@ -1,8 +1,17 @@
-# HTTP / HTTPS — Couche 1
+`Couche 1 — Transport & protocoles`
 
-## Dépendances
-- T-01 — Node.js (pour créer un serveur HTTP)
-- C1-01 — Ports (HTTP = port 80, HTTPS = port 443)
+# HTTP / HTTPS
+
+> Comprendre la langue que parlent le navigateur et le serveur pour échanger des données.
+
+**Prérequis :** `T-01` `C1-01`
+
+**Ce que tu vas apprendre :**
+- Comment fonctionne une requête/réponse HTTP
+- Les codes de statut essentiels (200, 404, 500)
+- Comment observer les requêtes avec curl et DevTools
+
+---
 
 ## 🟦 Carte d'identité
 
@@ -12,6 +21,14 @@
 > en HTTP. Le serveur répond avec une "réponse". C'est tout.
 > HTTPS c'est la même chose mais chiffré — personne ne peut 
 > lire la conversation en chemin.
+
+**Rôle technique :**
+> HTTP (HyperText Transfer Protocol) est le protocole de communication 
+> du web. Chaque interaction navigateur-serveur passe par une requête 
+> et une réponse, avec des headers (métadonnées) et un body (contenu).
+
+**Schéma** :
+📸 à ajouter dans docs/
 
 **Anatomie d'une requête HTTP :**
 ```
@@ -43,7 +60,8 @@ Content-Length: 1234
 
 ## 🟩 Sous le capot
 
-**Le cycle complet d'une requête :**
+**Mécanisme :**
+> Le cycle complet d'une requête :
 > 1. Tu tapes `localhost:3000` dans Chrome
 > 2. Chrome crée une requête HTTP GET
 > 3. L'OS envoie le paquet vers le port 3000
@@ -51,7 +69,7 @@ Content-Length: 1234
 > 5. Node.js prépare une réponse HTML
 > 6. Chrome reçoit la réponse et affiche la page
 
-**Observer les requêtes HTTP en vrai :**
+**Outils d'observation :**
 ```bash
 # Faire une requête HTTP depuis le terminal
 curl http://localhost:3000
@@ -63,6 +81,13 @@ curl -I http://localhost:3000
 curl -v http://localhost:3000
 ```
 
+**Schéma technique** :
+```mermaid
+sequenceDiagram
+  Navigateur->>Serveur: GET /page HTTP/1.1
+  Serveur->>Navigateur: 200 OK + HTML
+```
+
 ---
 
 ## 🟥 Laboratoire de test
@@ -72,10 +97,15 @@ Voir src/serveur-routes.js
 
 **Test dans le navigateur (DevTools) :**
 > 1. Lance le serveur
-> 2. Ouvre Chrome sur localhost:3000
+> 2. Ouvre Chrome sur localhost:3001
 > 3. F12 → onglet "Network"
 > 4. Recharge la page
 > 5. Tu vois la requête GET et la réponse 200
+
+**Commande clé à retenir :**
+```bash
+curl -v http://localhost:3001
+```
 
 ---
 
@@ -101,6 +131,28 @@ Voir src/serveur-routes.js
 
 ---
 
+## 🔄 Alternatives
+
+| Outil | Gratuit | Open Source | Freemium | Premium | Limites |
+|-------|---------|-------------|----------|---------|---------|
+| curl | ✅ | ✅ | — | — | Ligne de commande uniquement |
+| Postman | ✅ | — | ✅ | ✅ | Lourd, compte requis |
+| Bruno | ✅ | ✅ | — | — | Moins connu |
+| Insomnia | ✅ | ✅ | ✅ | — | Racheté par Kong |
+
+> **Recommandation EticLab :** `curl` pour apprendre (intégré, rapide). Bruno si tu veux une interface graphique open source.
+
+---
+
+## ✅ Checklist de validation
+
+- [ ] Est-ce que je sais expliquer la différence entre requête et réponse ?
+- [ ] Est-ce que je connais les codes 200, 404, 500 ?
+- [ ] Est-ce que je sais utiliser curl pour inspecter une requête ?
+- [ ] Est-ce que je sais ouvrir l'onglet Network dans DevTools ?
+
+---
+
 ## 🧰 Toolbox
 
 | Outil | Usage | Prix | Risque |
@@ -109,6 +161,13 @@ Voir src/serveur-routes.js
 | Postman | Tester des API | Gratuit | Lourd |
 | Bruno | Alternative Postman | Gratuit, open source | Moins connu |
 | DevTools Network | Observer requêtes | Intégré Chrome | Aucun |
+
+---
+
+## 📚 Aller plus loin
+
+- [MDN — HTTP Overview](https://developer.mozilla.org/fr/docs/Web/HTTP/Overview)
+- [HTTP Status Codes — httpstatuses.com](https://httpstatuses.com)
 
 ## Liens avec d'autres modules
 - → C1-01-ports : HTTP utilise le port 80/443

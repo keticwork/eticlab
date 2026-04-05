@@ -1,8 +1,17 @@
-# package.json & scripts npm — Couche T (Tooling)
+`Couche T — Tooling`
 
-## Dépendances
-- T-01 — Node.js & npm (package.json est le fichier central de npm)
-- T-02 — Terminal (on lance les scripts depuis le terminal)
+# package.json & scripts npm
+
+> Comprendre le fichier de configuration central d'un projet Node.js et automatiser ses commandes.
+
+**Prérequis :** `T-01` `T-02`
+
+**Ce que tu vas apprendre :**
+- L'anatomie d'un package.json et le rôle de chaque champ
+- Comment fonctionnent les versions sémantiques (semver)
+- Comment créer et lancer des scripts npm custom
+
+---
 
 ## 🟦 Carte d'identité
 
@@ -20,6 +29,9 @@
 > - La liste des dépendances (les briques téléchargées via npm)
 > - Les scripts (les commandes automatisées)
 > - Les métadonnées (auteur, licence, description)
+
+**Schéma** :
+📸 à ajouter dans docs/
 
 **Ce que package.json n'est PAS :**
 - Ce n'est pas du code exécutable (c'est de la configuration)
@@ -39,6 +51,13 @@ npm run dev   →  Lance le script "dev" défini dans package.json
 ---
 
 ## 🟩 Sous le capot
+
+**Mécanisme :**
+> 1. Tu crées un package.json avec `npm init`
+> 2. Tu ajoutes des dépendances avec `npm install paquet`
+> 3. npm télécharge le paquet dans node_modules/ et l'ajoute à package.json
+> 4. Tu définis des scripts dans la section "scripts"
+> 5. Tu lances tes scripts avec `npm run nom-du-script`
 
 **Anatomie d'un package.json :**
 ```json
@@ -62,14 +81,28 @@ npm run dev   →  Lance le script "dev" défini dans package.json
 }
 ```
 
-**Les champs essentiels :**
-| Champ | Rôle | Exemple |
-|-------|------|---------|
-| name | Nom du projet | "eticlab" |
-| version | Version sémantique | "1.0.0" |
-| scripts | Commandes automatisées | "dev": "node server.js" |
-| dependencies | Briques nécessaires en prod | express, next |
-| devDependencies | Briques nécessaires en dev uniquement | nodemon, eslint |
+**Outils d'observation :**
+```bash
+# Voir le package.json du projet
+cat package.json
+
+# Voir les scripts disponibles
+npm run              # Liste tous les scripts
+
+# Voir les dépendances installées
+npm list --depth=0   # Niveau racine
+
+# Voir si des dépendances sont obsolètes
+npm outdated
+```
+
+**Schéma technique** :
+```mermaid
+graph TD
+  A[package.json] -->|npm install| B[node_modules/]
+  A -->|npm run dev| C[Script exécuté]
+  A -->|npm run build| D[Build production]
+```
 
 **Comprendre les versions (semver) :**
 ```
@@ -84,64 +117,21 @@ npm run dev   →  Lance le script "dev" défini dans package.json
    = version exacte (4.18.2 → 4.18.2 uniquement)
 ```
 
-**Les scripts npm — automatiser tes commandes :**
-```bash
-# Lancer un script défini dans package.json
-npm run dev        # Lance le script "dev"
-npm run build      # Lance le script "build"
-npm test           # Raccourci pour npm run test
-npm start          # Raccourci pour npm run start
-
-# Scripts spéciaux (pas besoin de "run") :
-# npm start, npm test, npm stop
-```
-
-**Outils d'observation :**
-```bash
-# Voir le package.json du projet
-cat package.json
-
-# Voir les scripts disponibles
-npm run              # Liste tous les scripts
-
-# Voir les dépendances installées
-npm list --depth=0   # Niveau racine
-npm list             # Tout l'arbre
-
-# Voir si des dépendances sont obsolètes
-npm outdated
-```
-
 ---
 
 ## 🟥 Laboratoire de test
 
 **POC 1 — Créer un package.json de zéro :**
 ```bash
-# Créer un dossier de test
 mkdir ~/test-npm && cd ~/test-npm
-
-# Initialiser un package.json (questions interactives)
-npm init
-
-# Ou version rapide (tout par défaut)
 npm init -y
 ```
 
 **POC 2 — Installer et comprendre les dépendances :**
 ```bash
-# Installer une dépendance de production
 npm install chalk
-# → Ajouté dans "dependencies" de package.json
-# → Téléchargé dans node_modules/
-
-# Installer une dépendance de dev
 npm install --save-dev nodemon
-# → Ajouté dans "devDependencies"
-
-# Voir ce qui a changé
 cat package.json
-ls node_modules/
 ```
 
 **POC 3 — Créer et lancer un script custom :**
@@ -152,7 +142,6 @@ ls node_modules/
   "ports": "lsof -i -P -n | grep LISTEN"
 }
 ```
-> Puis lancer :
 ```bash
 npm run hello
 npm run ports
@@ -167,8 +156,11 @@ npm run dev
 npm install
 # → Tout est retéléchargé grâce à package.json
 ```
-> C'est exactement pourquoi on ne commite jamais node_modules/ 
-> (il est dans .gitignore). package.json suffit à tout reconstruire.
+
+**Commande clé à retenir :**
+```bash
+npm run
+```
 
 ---
 
@@ -182,13 +174,8 @@ npm install
 
 **Vérification :**
 ```bash
-# Voir les scripts d'un paquet AVANT de l'installer
 npm info nom-du-paquet scripts
-
-# Auditer les vulnérabilités connues
 npm audit
-
-# Installer sans exécuter les scripts (mode parano)
 npm install --ignore-scripts
 ```
 
@@ -197,6 +184,29 @@ npm install --ignore-scripts
 > - Lire le package.json d'un paquet avant de l'installer
 > - Ne jamais installer un paquet trouvé au hasard sur internet
 > - Utiliser `npm audit` après chaque `npm install`
+
+---
+
+## 🔄 Alternatives
+
+| Outil | Gratuit | Open Source | Freemium | Premium | Limites |
+|-------|---------|-------------|----------|---------|---------|
+| npm | ✅ | ✅ | — | — | Lent sur gros projets |
+| pnpm | ✅ | ✅ | — | — | Liens symboliques, moins connu |
+| yarn | ✅ | ✅ | — | — | Fragmentation v1 vs v2+ |
+| bun | ✅ | ✅ | — | — | Jeune, compatibilité partielle |
+
+> **Recommandation EticLab :** rester sur npm pour apprendre 
+> (c'est le standard). Passer à pnpm quand on maîtrise les bases.
+
+---
+
+## ✅ Checklist de validation
+
+- [ ] Est-ce que je sais créer un package.json avec npm init ?
+- [ ] Est-ce que je sais la différence entre dependencies et devDependencies ?
+- [ ] Est-ce que je sais lire une version semver (^4.18.2) ?
+- [ ] Est-ce que je sais pourquoi on ne commite jamais node_modules/ ?
 
 ---
 
@@ -210,21 +220,15 @@ npm install --ignore-scripts
 | npx | Exécuter sans installer | Inclus avec npm | Exécution de code distant |
 | nodemon | Redémarrage auto en dev | Gratuit, open source | Dev uniquement |
 
-## 🔄 Alternatives
+---
 
-| Outil | Type | Modèle | Avantage | Inconvénient |
-|-------|------|--------|----------|--------------|
-| npm | Gestionnaire de paquets | Gratuit / open source | Par défaut, universel | Lent sur gros projets |
-| pnpm | Gestionnaire de paquets | Gratuit / open source | Rapide, économe en disque | Moins connu, liens symboliques |
-| yarn | Gestionnaire de paquets | Gratuit / open source | Rapide, workspaces natifs | Fragmentation (v1 vs v2+) |
-| bun | Runtime + gestionnaire | Gratuit / open source | Ultra rapide, tout-en-un | Jeune, compatibilité partielle |
+## 📚 Aller plus loin
 
-> **Recommandation EticLab :** rester sur npm pour apprendre 
-> (c'est le standard). Passer à pnpm quand on maîtrise les bases 
-> et qu'on veut optimiser.
+- [npm — documentation officielle](https://docs.npmjs.com)
+- [semver.org — comprendre les versions](https://semver.org)
 
 ## Liens avec d'autres modules
 - → T-01-nodejs : npm est livré avec Node.js
 - → T-02-terminal : on lance les scripts npm dans le terminal
 - → T-03-git : .gitignore doit exclure node_modules/
-- → C3-01-nextjs : Next.js utilise package.json pour ses scripts (dev, build, start)
+- → C3-01-nextjs : Next.js utilise package.json pour ses scripts
