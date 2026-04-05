@@ -64,6 +64,9 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ Landing: phases cliquables → /modules?phase=code
 - ✅ /modules: filtre par phase (?phase=) avec badge effaçable
 - ✅ middleware.ts → proxy.ts (convention Next.js 16)
+- ✅ /modules/[slug] — contenu markdown depuis GitHub raw + react-markdown + typography
+- ✅ Panel arbre: slide-in animation, positionné sous navbar
+- ✅ Mapping code→dossier GitHub dans lib/module-folders.ts
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
