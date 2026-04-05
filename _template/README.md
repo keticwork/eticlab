@@ -38,3 +38,11 @@
 | Outil | Usage | Prix | Risque |
 |-------|-------|------|--------|
 | ... | ... | ... | ... |
+
+## 🔄 Alternatives
+
+| Outil | Gratuit | Open Source | Freemium | Premium | Limites |
+|-------|---------|-------------|----------|---------|---------|
+| ... | ... | ... | ... | ... | ... |
+
+> **Recommandation EticLab :** ...
