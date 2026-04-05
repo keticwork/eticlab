@@ -19,6 +19,10 @@ Repo GitHub : github.com/keticwork/eticlab
 - Claude Code : exécution, fichiers, commits
 - GitHub : versioning (github.com/keticwork/eticlab)
 
+## Format des modules
+Le template standard est dans : _template/README.md
+Toujours lire ce fichier avant de générer un nouveau module.
+
 ## Modules complétés aujourd'hui (05/04/2026)
 - ✅ C1-01-ports — rédigé + TESTS.md
 - ✅ T-01-nodejs — complet
@@ -26,6 +30,7 @@ Repo GitHub : github.com/keticwork/eticlab
 - ✅ T-03-git — complet
 - ✅ C1-02-http — complet + bug favicon corrigé + TESTS.md
 - ✅ C2-01-os — complet
+- ✅ T-A01 — Claude & IA — complet
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -33,7 +38,6 @@ Repo GitHub : github.com/keticwork/eticlab
 - C5-01 à C5-04
 
 ## Modules à créer (identifiés en session)
-- T-A01 — IA & Claude (prompts, projets, contexte)
 - T-A02 — Outils & alternatives (Supabase, Vercel, etc.)
 - T-A03 — Ne pas réinventer la roue
 - T-01b — package.json & scripts npm
