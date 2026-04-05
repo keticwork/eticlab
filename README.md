@@ -47,3 +47,4 @@ Laboratoire R&D personnel — comprendre chaque brique technologique d'un SaaS, 
 - [x] T-01 — Node.js & npm
 - [ ] T-02 — Terminal
 - [ ] T-03 — Git
+- [ ] T-A01 — IA & Claude (utiliser Claude, Claude Code, prompts, projets)
