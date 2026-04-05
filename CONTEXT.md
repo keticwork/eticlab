@@ -37,6 +37,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ C3-01 — Next.js & React — complet
 - ✅ C3-02 — Routing — complet
 - ✅ C3-03 — Composants & UI — complet
+- ✅ C4-01 — Supabase — complet
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -112,7 +113,7 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 - ✅ C3-03 — Composants & UI
 
 ### Phase 3 — Les données
-- 🔲 C4-01 — Supabase (base de données)
+- ✅ C4-01 — Supabase (base de données)
 - 🔲 C4-02 — API REST
 
 ### Phase 4 — Mise en ligne
