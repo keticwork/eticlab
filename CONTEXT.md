@@ -86,6 +86,11 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ Protection admin: proxy.ts + vérification email keticwork@gmail.com
 - ✅ RLS Supabase: policies admin pour lecture cross-user
 - ✅ Navbar: lien Admin discret (visible uniquement pour l'admin)
+- ✅ fix: Footer fixe bottom-0 z-20, sidebar/panel au-dessus du footer
+- ✅ fix: Logo Next.js dev masqué (devIndicators false)
+- ✅ fix: Mermaid intégré dans ModuleContent (schémas visuels)
+- ✅ fix: Fond dégradé sombre→clair sur /modules, /modules/[slug], /arbre
+- ✅ fix: Largeur pages max-w-5xl/6xl, padding confortable
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
