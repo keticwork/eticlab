@@ -100,6 +100,12 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 - ✅ C1-03 — CDN
 - ✅ C1-04 — SSL
 
+### Phase 1b — Bases du web
+- 🔲 C2-02 — HTML (structure d'une page)
+- 🔲 C2-03 — CSS (mise en forme et responsive)
+- 🔲 C2-04 — JavaScript (logique et interactivité)
+- 🔲 C2-05 — DOM (comment JS manipule une page)
+
 ### Phase 2 — L'appli
 - ✅ C3-01 — Next.js / React (structure)
 - ✅ C3-02 — Routing (navigation)
