@@ -53,6 +53,8 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ eticlab-app déployé sur Vercel
 - ✅ Auth Google fonctionnelle
 - ✅ Navbar connectée à Supabase Auth
+- ✅ Auth complète — login/signup email+mdp, reset password, middleware, /arbre protégé
+- ✅ C3-04 enrichi — middleware, reset-password, session 30j, toggle mot de passe
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker

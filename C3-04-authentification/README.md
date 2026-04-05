@@ -81,16 +81,20 @@ src/
 | Browser | `supabase-client.ts` | Client Components | Lit les cookies du navigateur |
 | Server | `supabase-server.ts` | Server Components, API routes | Lit les cookies de la requête HTTP |
 
-**Protéger une route (middleware) :**
+**Protéger une route (middleware) — implémenté dans eticlab-app :**
 ```ts
-// middleware.ts — à la racine du projet
-import { createServerClient } from '@supabase/ssr'
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+// src/middleware.ts
+import { createServerClient } from "@supabase/ssr";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+const protectedRoutes = ["/arbre", "/dashboard"];
 
 export async function middleware(request: NextRequest) {
-  const response = NextResponse.next()
-  
+  const response = NextResponse.next({
+    request: { headers: request.headers },
+  });
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -99,26 +103,64 @@ export async function middleware(request: NextRequest) {
         getAll() { return request.cookies.getAll() },
         setAll(cookiesToSet) {
           cookiesToSet.forEach(({ name, value, options }) => {
-            response.cookies.set(name, value, options)
-          })
+            request.cookies.set(name, value);
+            response.cookies.set(name, value, options);
+          });
         },
       },
     }
-  )
+  );
 
-  const { data: { user } } = await supabase.auth.getUser()
+  const { data: { user } } = await supabase.auth.getUser();
 
-  // Rediriger vers /connexion si non connecté
-  if (!user && request.nextUrl.pathname.startsWith('/dashboard')) {
-    return NextResponse.redirect(new URL('/connexion', request.url))
+  const isProtected = protectedRoutes.some((route) =>
+    request.nextUrl.pathname.startsWith(route)
+  );
+
+  if (isProtected && !user) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/connexion";
+    return NextResponse.redirect(url);
   }
 
-  return response
+  return response;
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/compte/:path*'],
+  matcher: ["/arbre/:path*", "/dashboard/:path*"],
+};
+```
+
+**Session persistante (30 jours) :**
+```ts
+// src/lib/supabase-client.ts
+import { createBrowserClient } from '@supabase/ssr'
+
+export function createClient() {
+  return createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      auth: {
+        persistSession: true,    // session stockée dans les cookies
+        autoRefreshToken: true,  // refresh automatique avant expiration
+      },
+    }
+  )
 }
+```
+> Supabase gère le refresh token automatiquement. Avec ces options, 
+> la session reste active ~30 jours sans que l'utilisateur ait à 
+> se reconnecter.
+
+**Page de réinitialisation du mot de passe :**
+> Route `/reset-password` — champ email, envoi du lien via 
+> `supabase.auth.resetPasswordForEmail()`, message de confirmation.
+> Le lien redirige vers `/auth/callback` puis vers la page d'accueil.
+
+**Toggle afficher/masquer mot de passe :**
+> Bouton 👁️/🙈 dans les champs mot de passe qui bascule 
+> `type="password"` ↔ `type="text"` via un state `showPassword`.
 ```
 
 **Récupérer l'utilisateur côté serveur :**
@@ -154,7 +196,7 @@ export default async function DashboardPage() {
 ```mermaid
 sequenceDiagram
   User->>Page connexion: Clic Google / Email
-  Page connexion->>Supabase Auth: signInWithOAuth / signInWithOtp
+  Page connexion->>Supabase Auth: signInWithPassword / signInWithOAuth
   Supabase Auth->>Google/Email: Vérification
   Google/Email->>Supabase Auth: Code / Confirmation
   Supabase Auth->>Navigateur: Cookie JWT (session)
@@ -168,12 +210,13 @@ sequenceDiagram
 
 ## 🟥 Laboratoire de test
 
-**POC 1 — Connexion magic link :**
+**POC 1 — Connexion email / mot de passe :**
 > 1. Lance `npm run dev`
-> 2. Va sur /connexion
-> 3. Entre ton email
-> 4. Vérifie ta boîte mail → clique le lien
-> 5. Tu es redirigé vers / avec ta session active
+> 2. Va sur /connexion → onglet "Créer un compte"
+> 3. Entre prénom, email, mot de passe (min. 6 caractères)
+> 4. Message : "Vérifie ta boîte mail pour confirmer ton compte"
+> 5. Confirme → reviens sur /connexion → onglet "Se connecter"
+> 6. Après login → redirect vers /arbre
 
 **POC 2 — Connexion Google :**
 > 1. Configure le provider Google dans Supabase (voir T-GCLOUD01)
@@ -187,10 +230,20 @@ sequenceDiagram
 > 3. F12 → Console : tape `document.cookie`
 > 4. Les cookies httpOnly ne sont PAS visibles ici (c'est normal)
 
+**POC 4 — Réinitialisation du mot de passe :**
+> 1. Va sur /connexion → "Mot de passe oublié ?"
+> 2. Entre ton email sur /reset-password
+> 3. Message : "Lien envoyé ! Vérifie ta boîte mail"
+> 4. Supabase envoie un email avec un lien de reset
+
+**POC 5 — Toggle afficher/masquer mot de passe :**
+> Sur /connexion, clique l'icône 👁️ à droite du champ mot de passe.
+> Le champ passe de `type="password"` à `type="text"` et vice-versa.
+
 **Test de panne :**
 > Supprime les cookies Supabase dans DevTools :
 > → La navbar passe en mode "non connecté"
-> → Les pages protégées redirigent vers /connexion
+> → /arbre redirige vers /connexion (middleware)
 > → Reconnecte-toi pour restaurer la session
 
 **Commande clé à retenir :**
