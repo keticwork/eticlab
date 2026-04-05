@@ -45,6 +45,8 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ T-SEC01 — Sécurité web — complet
 - ✅ T-LEG01 — Légal & RGPD — complet
 - ✅ T-A03b — Landing page & structure plateforme — complet
+- ✅ BDD Supabase créée — tables phases, modules, connexions
+- ✅ eticlab-app connecté à Supabase
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -62,10 +64,13 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ERR_HTTP_HEADERS_SENT → favicon.ico non géré
 
 ## Prochaines étapes
-1. Module T-A01 Claude/IA
-2. Rendre le serveur visible sur le réseau (Pi ou Vercel)
-3. Ajouter captures d'écran dans docs/ de chaque module
-4. Créer interface visuelle EticLab (page web du labo)
+1. Peupler la BDD Supabase avec les modules existants ✅
+2. Connecter eticlab-app à Supabase (afficher les modules dynamiquement)
+3. Créer la page /modules
+4. Créer la page /arbre (graphique interactif)
+5. Ajouter l'authentification (Supabase Auth)
+6. Intégrer l'API Claude (guide IA)
+7. Dashboard superadmin
 
 ## Vision EticLab (plateforme de formation)
 Objectif final : plateforme interactive de formation technique,
