@@ -60,7 +60,10 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ Page /modules — liste dynamique Supabase, recherche temps réel, cards par phase
 - ✅ Page /modules/[slug] — placeholder pour contenu futur
 - ✅ Landing: recherche redirige vers /modules?q=terme
-- ✅ Page /arbre — mind map interactif (react-force-graph-2d), accessible sans connexion
+- ✅ Page /arbre — refonte arbre hiérarchique vertical (accordion, sans librairie externe)
+- ✅ Landing: phases cliquables → /modules?phase=code
+- ✅ /modules: filtre par phase (?phase=) avec badge effaçable
+- ✅ middleware.ts → proxy.ts (convention Next.js 16)
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -78,6 +81,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ERR_HTTP_HEADERS_SENT → favicon.ico non géré
 - Redirect après login : router.push ne propage pas les cookies → fix: window.location.href
 - Confirmation email : callback ne gérait que le code OAuth, pas token_hash → fix: verifyOtp ajouté
+- middleware.ts deprecated en Next.js 16 → renommé en proxy.ts avec export proxy()
 
 ## Prochaines étapes
 1. Page /modules — liste dynamique depuis Supabase ✅
