@@ -1,6 +1,20 @@
-# [Nom du module] — Couche X
+`Couche X — Nom de la couche`
+
+# [Nom du module]
+
+> Description courte en une ligne.
+
+**Prérequis :** `T-01` `C1-01` `C1-02`
+
+**Ce que tu vas apprendre :**
+- ...
+- ...
+- ...
+
+---
 
 ## 🟦 Carte d'identité
+
 **Définition simple** (analogie pour un enfant de 5 ans) :
 > ...
 
@@ -8,23 +22,47 @@
 > ...
 
 **Schéma** :
-<!-- Insérer schéma Mermaid ou image ici -->
+📸 à ajouter dans docs/
+
+---
 
 ## 🟩 Sous le capot
-**Mécanisme** (que se passe-t-il physiquement ?) :
-> ...
+
+**Mécanisme** :
+> 1. ...
+> 2. ...
+> 3. ...
 
 **Outils d'observation** :
-- ...
+```bash
+# ...
+```
+
+**Schéma technique** :
+```mermaid
+graph LR
+  A[...] --> B[...]
+```
+
+---
 
 ## 🟥 Laboratoire de test
+
 **POC — Proof of Concept** :
 <!-- Voir /src -->
 
 **Test de panne** :
 > Si je coupe X, que se passe-t-il ?
 
+**Commande clé à retenir** :
+```bash
+# ...
+```
+
+---
+
 ## 💀 Zone de hack
+
 **Vulnérabilité classique** :
 > ...
 
@@ -34,10 +72,7 @@
 **Contre-mesure** :
 > ...
 
-## 🧰 Toolbox
-| Outil | Usage | Prix | Risque |
-|-------|-------|------|--------|
-| ... | ... | ... | ... |
+---
 
 ## 🔄 Alternatives
 
@@ -46,3 +81,28 @@
 | ... | ... | ... | ... | ... | ... |
 
 > **Recommandation EticLab :** ...
+
+---
+
+## ✅ Checklist de validation
+
+- [ ] Est-ce que je sais expliquer ce concept simplement ?
+- [ ] Est-ce que je sais l'observer / le tester sur ma machine ?
+- [ ] Est-ce que je connais la vulnérabilité principale ?
+- [ ] Est-ce que je sais quelle alternative choisir et pourquoi ?
+
+---
+
+## 🧰 Toolbox
+
+| Outil | Usage | Prix | Risque |
+|-------|-------|------|--------|
+| ... | ... | ... | ... |
+
+---
+
+## 📚 Aller plus loin
+
+- [Documentation officielle](...)
+- [Outil de test en ligne](...)
+- [Article / tutoriel recommandé](...)
