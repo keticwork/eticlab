@@ -52,3 +52,38 @@ Toujours lire ce fichier avant de générer un nouveau module.
 2. Rendre le serveur visible sur le réseau (Pi ou Vercel)
 3. Ajouter captures d'écran dans docs/ de chaque module
 4. Créer interface visuelle EticLab (page web du labo)
+
+## Vision EticLab (plateforme de formation)
+Objectif final : plateforme interactive de formation technique.
+- Parcours "fil rouge" dynamique selon l'objectif de l'utilisateur
+- Modules modulaires et extensibles (ex: auth optionnelle)
+- Pas d'authentification pour l'instant
+- Stack : Next.js / React, Supabase (freemium), Vercel (pro)
+- Déploiement Vercel uniquement après tests locaux validés
+
+## Feuille de route des modules (ordre logique)
+### Phase 1 — Fondations
+- ✅ T-01-nodejs
+- ✅ T-02-terminal
+- ✅ T-03-git
+- ✅ T-A01-claude
+- 🔲 T-01b — package.json & scripts npm
+- 🔲 C1-03 — CDN
+- 🔲 C1-04 — SSL
+
+### Phase 2 — L'appli
+- 🔲 C3-01 — Next.js / React (structure)
+- 🔲 C3-02 — Routing (navigation)
+- 🔲 C3-03 — Composants & UI
+
+### Phase 3 — Les données
+- 🔲 C4-01 — Supabase (base de données)
+- 🔲 C4-02 — API REST
+
+### Phase 4 — Mise en ligne
+- 🔲 C5-01 — Vercel (déploiement)
+- 🔲 T-A02 — Outils & alternatives
+
+## Convention alternatives
+Chaque module doit inclure une section Alternatives.
+Minimum 2 alternatives, classées par : gratuit / open source / freemium / premium.
