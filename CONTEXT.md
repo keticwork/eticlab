@@ -96,6 +96,20 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 - Champ "lien affilié" à ajouter dans le tableau Alternatives
   quand la plateforme sera en ligne
 
+### Structure de la plateforme
+- Landing page : présentation du concept + CTA inscription
+- Modules : accessibles gratuitement sans compte (avec affiliation)
+- Compte gratuit : sauvegarde progression, accès modules
+- Compte payant : accès IA, génération parcours dynamique, prompts
+
+### SEO & LLM-friendly (priorité dès le début)
+- URLs propres : /modules/c1-04-ssl
+- SSR Next.js pour pages lisibles sans JS
+- Balises meta + H1/H2 structurés sur chaque module
+- Sitemap.xml généré automatiquement
+- Fichier llms.txt à la racine pour les IA
+- Module dédié : T-A03 — SEO & LLM-friendly (à créer)
+
 ### IA — fonctionnalités avancées
 - L'IA génère le parcours dynamique selon l'objectif utilisateur
 - Pour chaque étape du parcours, l'IA propose un prompt
@@ -135,6 +149,8 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 ### Phase 4 — Mise en ligne
 - ✅ C5-01 — Vercel (déploiement)
 - ✅ T-A02 — Outils & alternatives
+- 🔲 T-A03 — SEO & LLM-friendly
+- 🔲 T-A03b — Landing page & structure plateforme
 
 ## Convention alternatives
 Chaque module doit inclure une section Alternatives.
