@@ -57,6 +57,9 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ C3-04 enrichi — middleware, reset-password, session 30j, toggle mot de passe
 - ✅ fix: redirect après login (window.location.href au lieu de router.push)
 - ✅ fix: callback gère token_hash (confirmation email) + code (OAuth)
+- ✅ Page /modules — liste dynamique Supabase, recherche temps réel, cards par phase
+- ✅ Page /modules/[slug] — placeholder pour contenu futur
+- ✅ Landing: recherche redirige vers /modules?q=terme
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -76,7 +79,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - Confirmation email : callback ne gérait que le code OAuth, pas token_hash → fix: verifyOtp ajouté
 
 ## Prochaines étapes
-1. Page /modules — liste dynamique depuis Supabase
+1. Page /modules — liste dynamique depuis Supabase ✅
 2. Page /arbre — graphique interactif des modules
 3. Page /commencer — onboarding utilisateur
 4. Déploiement Vercel — uniquement via Claude Code 
