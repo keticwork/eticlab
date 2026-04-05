@@ -40,6 +40,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ C4-01 — Supabase — complet
 - ✅ C4-02 — API REST — complet
 - ✅ C5-01 — Vercel — complet
+- ✅ T-A02 — Outils & alternatives — complet
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -133,7 +134,7 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 
 ### Phase 4 — Mise en ligne
 - ✅ C5-01 — Vercel (déploiement)
-- 🔲 T-A02 — Outils & alternatives
+- ✅ T-A02 — Outils & alternatives
 
 ## Convention alternatives
 Chaque module doit inclure une section Alternatives.
