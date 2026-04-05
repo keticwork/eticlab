@@ -45,3 +45,5 @@ Laboratoire R&D personnel — comprendre chaque brique technologique d'un SaaS, 
 
 ### Couche T — Tooling
 - [x] T-01 — Node.js & npm
+- [ ] T-02 — Terminal
+- [ ] T-03 — Git
