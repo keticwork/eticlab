@@ -110,6 +110,29 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 - Fichier llms.txt à la racine pour les IA
 - Module dédié : T-A03 — SEO & LLM-friendly (à créer)
 
+### Sécurité (priorité dès le début)
+- Pas de clés API exposées côté client
+- Variables d'environnement correctement séparées
+- Protection XSS, injection SQL, CSRF
+- Rate limiting sur les routes API et IA
+- RLS (Row Level Security) activé sur Supabase
+- Headers de sécurité HTTP (CSP, HSTS...)
+- Module dédié : T-SEC01 — Sécurité web (à créer)
+
+### Légal & RGPD (obligatoire dès le lancement)
+- Mentions légales (société Etic — autoentrepreneur → SASU)
+- Politique de confidentialité
+- Gestion des cookies : consentement RGPD
+- CGU (conditions générales d'utilisation)
+- CGV (conditions générales de vente) si paiement
+- Module dédié : T-LEG01 — Légal & RGPD (à créer)
+
+### Société
+- Nom : Etic
+- Statut actuel : autoentrepreneur
+- Statut futur : SASU
+- Projet : EticLab (plateforme de formation)
+
 ### IA — fonctionnalités avancées
 - L'IA génère le parcours dynamique selon l'objectif utilisateur
 - Pour chaque étape du parcours, l'IA propose un prompt
@@ -151,6 +174,8 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 - ✅ T-A02 — Outils & alternatives
 - 🔲 T-A03 — SEO & LLM-friendly
 - 🔲 T-A03b — Landing page & structure plateforme
+- 🔲 T-SEC01 — Sécurité web
+- 🔲 T-LEG01 — Légal & RGPD
 
 ## Convention alternatives
 Chaque module doit inclure une section Alternatives.
