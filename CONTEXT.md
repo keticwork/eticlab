@@ -205,6 +205,7 @@ lisible comme un livre ET utilisable comme un outil de guidage IA.
 - Git push à chaque commit important (automatique)
 - Déploiement Vercel : uniquement quand une feature 
   est complète et testée en local
+- Projet lié : .vercel/project.json créé — pas de prompts interactifs
 - Commande : cd ~/Dev/keticwork/eticlab-app && vercel --prod
 - Toujours tester en local avant de déployer
 
