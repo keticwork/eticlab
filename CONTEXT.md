@@ -71,6 +71,10 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ Table profiles (compteur IA) + table ai_suggestions (modules manquants)
 - ✅ Navbar : lien IA visible si connecté
 - ✅ Codes modules cliquables dans les réponses IA
+- ✅ fix: Navbar fixed en haut (z-50), body padding-top compensé
+- ✅ fix: Prérequis cliquables dans /modules/[slug]
+- ✅ fix: Tableaux markdown (remark-gfm) dans ModuleContent
+- ✅ fix: Panel arbre positionné sous navbar fixe
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
