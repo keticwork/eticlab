@@ -67,6 +67,10 @@ Toujours lire ce fichier avant de générer un nouveau module.
 - ✅ /modules/[slug] — contenu markdown depuis GitHub raw + react-markdown + typography
 - ✅ Panel arbre: slide-in animation, positionné sous navbar
 - ✅ Mapping code→dossier GitHub dans lib/module-folders.ts
+- ✅ Chat IA guidage — API Anthropic Claude + interface + limite 10/jour
+- ✅ Table profiles (compteur IA) + table ai_suggestions (modules manquants)
+- ✅ Navbar : lien IA visible si connecté
+- ✅ Codes modules cliquables dans les réponses IA
 
 ## Modules créés (structure vide à remplir)
 - C1-03-cdn, C1-04-ssl, C2-02-env, C2-03-docker
@@ -90,6 +94,7 @@ Toujours lire ce fichier avant de générer un nouveau module.
 1. Page /modules — liste dynamique depuis Supabase ✅
 2. Page /arbre — graphique interactif des modules ✅
 3. Page /commencer — onboarding utilisateur
+6. Intégrer l'API Claude (guide IA) ✅
 4. Déploiement Vercel — uniquement via Claude Code 
    après plusieurs commits, pas à chaque push
 5. Améliorer le visuel landing (transitions, sections)
